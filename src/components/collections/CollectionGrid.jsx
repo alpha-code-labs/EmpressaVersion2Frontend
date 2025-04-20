@@ -1,5 +1,5 @@
 import React from 'react';
-import CollectionCard from './collectioncard';
+import CollectionCard from './CollectionCard';
 import './CollectionGrid.css';
 
 const CollectionGrid = ({ collections }) => {
