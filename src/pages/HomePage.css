@@ -1,0 +1,37 @@
+.testimonial-section {
+  text-align: center;
+  padding: 3rem 1rem 2rem; /* Generous space above and below */
+  margin-top: 2rem; /* Additional space after cards */
+}.home-page {
+  width: 100%;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 0.75rem 1rem 0.25rem; /* Further reduced padding */
+  margin-bottom: 0.25rem; /* Reduced margin */
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem 0.5rem;
+  }
+  
+  .collection-title {
+    font-size: 1.8rem;
+  }
+  
+  .collection-subtitle {
+    font-size: 1rem;
+  }
+}
+

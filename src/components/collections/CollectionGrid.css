@@ -1,0 +1,67 @@
+/* Collection grid with centering for 5 items */
+.collection-grid-container {
+  padding: 3rem 0;
+  width: 100%;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Keep 6 columns for structure */
+  gap: 0.75rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  justify-content: center; /* Center the grid items */
+}
+
+/* Style for 5 items specifically */
+.collection-grid:has(:nth-child(5):last-child) {
+  grid-template-columns: repeat(5, 1fr); /* Adjust to 5 columns when there are 5 items */
+}
+
+/* Alternative approach if :has selector isn't supported in all browsers */
+.collection-grid-5-items {
+  grid-template-columns: repeat(5, 1fr); /* Apply this class when you have 5 items */
+}
+
+/* Tablet breakpoint */
+@media screen and (max-width: 992px) {
+  .collection-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  /* Ensure 5 items also use 3 columns on tablet */
+  .collection-grid:has(:nth-child(5):last-child),
+  .collection-grid-5-items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Small tablet breakpoint */
+@media screen and (max-width: 768px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  /* Ensure 5 items also use 2 columns on small tablet */
+  .collection-grid:has(:nth-child(5):last-child),
+  .collection-grid-5-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile breakpoint */
+@media screen and (max-width: 576px) {
+  .collection-grid,
+  .collection-grid:has(:nth-child(5):last-child),
+  .collection-grid-5-items {
+    grid-template-columns: 1fr; /* 1 card per row on mobile */
+    gap: 1.5rem;
+  }
+  
+  .collection-grid-container {
+    padding: 2rem 0;
+  }
+}

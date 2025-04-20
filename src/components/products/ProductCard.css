@@ -1,0 +1,187 @@
+.product-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(184, 162, 131, 0.2); /* Subtle gold border */
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(184, 162, 131, 0.15);
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.product-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 125%; /* Maintain aspect ratio */
+  overflow: hidden;
+  background-color: #f9f8f6;
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b8a283;
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0 0.5rem;
+  background: linear-gradient(135deg, #f9f6f0 0%, #efe9db 100%);
+}
+
+.product-info {
+  padding: 1.25rem 1.25rem 3.5rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* Reset all h3 default styles and make title less prominent */
+.product-title {
+  /* Reset all heading styles */
+  display: block;
+  margin: 0;
+  padding: 0;
+  /* Very small font size */
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  font-family: Arial, sans-serif !important;
+  color: #777 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  line-height: 1.2 !important;
+  /* Force max height */
+  max-height: 2.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Remove margin bottom */
+  margin-bottom: 0.4rem !important;
+}
+
+.product-price-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.product-price {
+  font-family: 'Arial', sans-serif;
+  color: #b8a283; /* Gold accent */
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.product-original-price {
+  font-family: 'Arial', sans-serif;
+  color: #999;
+  font-weight: 400;
+  font-size: 1rem;
+  text-decoration: line-through;
+}
+
+.product-discount {
+  font-family: 'Arial', sans-serif;
+  color: #e05151; /* Red color for discount */
+  font-weight: 600;
+  font-size: 0.9rem;
+  background-color: rgba(224, 81, 81, 0.1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
+
+.product-cta-button {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1.5rem;
+  background-color: #b8a283;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 75%;
+  max-width: 160px;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.product-cta-button:hover {
+  background-color: #a08b6e;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .product-title {
+    font-size: 0.75rem; /* Further reduced */
+  }
+  
+  .product-price {
+    font-size: 1.1rem;
+  }
+  
+  .product-original-price {
+    font-size: 0.9rem;
+  }
+  
+  .product-discount {
+    font-size: 0.8rem;
+  }
+  
+  .product-info {
+    padding: 1rem 1rem 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-title {
+    font-size: 0.7rem; /* Even smaller on mobile */
+  }
+  
+  .product-info {
+    padding: 0.75rem 0.75rem 3.5rem;
+  }
+}

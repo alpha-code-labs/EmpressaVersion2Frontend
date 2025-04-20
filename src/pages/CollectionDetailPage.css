@@ -1,0 +1,151 @@
+.collection-detail-page {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.collection-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.collection-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.collection-title:after {
+  content: '';
+  position: absolute;
+  bottom: -0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background-color: #b8a283; /* Luxury gold accent */
+}
+
+.products-container {
+  width: 100%;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Ensure product cards have sufficient height for images */
+.products-grid > * {
+  min-height: 450px; /* Increase this value to allow more space for images */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure images maintain aspect ratio without trimming */
+.products-grid img {
+  max-height: 100%;
+  object-fit: contain; /* Change from 'cover' if that's what you're using */
+  width: 100%;
+}
+
+/* Ensure maximum of 5 cards per row */
+@media (min-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(calc(100% / 6), 1fr));
+  }
+}
+
+/* For 4 products, make them fill the space nicely */
+.products-grid.products-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* For 3 products, make them fill the space nicely */
+.products-grid.products-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* For 2 products, make them fill the space nicely */
+.products-grid.products-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.no-products {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  color: #888;
+  padding: 3rem 0;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem 0;
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  color: #888;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .collection-title {
+    font-size: 2.2rem;
+  }
+  
+  /* Override specific product count classes on tablets */
+  .products-grid.products-2,
+  .products-grid.products-3,
+  .products-grid.products-4,
+  .products-grid.products-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Adjust card height for tablets */
+  .products-grid > * {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .collection-detail-page {
+    padding: 0 1rem;
+  }
+  
+  .collection-header {
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .collection-title {
+    font-size: 1.8rem;
+  }
+  
+  .products-grid,
+  .products-grid.products-2,
+  .products-grid.products-3,
+  .products-grid.products-4,
+  .products-grid.products-5 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  /* Adjust card height for mobile */
+  .products-grid > * {
+    min-height: 350px;
+  }
+}

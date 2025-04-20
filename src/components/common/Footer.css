@@ -1,0 +1,112 @@
+.footer {
+    background-color: #f9f6f0;
+    border-top: 1px solid rgba(184, 162, 131, 0.3);
+    padding: 3rem 0 1.5rem;
+    margin-top: 3rem;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .social-links {
+    margin-bottom: 1.5rem;
+  }
+  
+  .instagram-link {
+    color: #333;
+    transition: color 0.3s ease;
+    display: inline-block;
+  }
+  
+  .instagram-link:hover {
+    color: #b8a283;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-link {
+    color: #333;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    margin: 0 1.5rem 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #b8a283;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(184, 162, 131, 0.2);
+  }
+  
+  .copyright {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.8rem;
+    color: #888;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 2rem 0 1rem;
+      margin-top: 2rem;
+    }
+    
+    .footer-container {
+      padding: 0 1rem;
+    }
+    
+    .footer-top {
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .footer-link {
+      margin: 0 0 1rem;
+      text-align: center;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .footer-top {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .social-links {
+      margin-bottom: 0;
+    }
+    
+    .footer-links {
+      justify-content: flex-end;
+    }
+    
+    .footer-link {
+      margin: 0 0 0 2rem;
+    }
+  }

@@ -1,0 +1,222 @@
+.header {
+  width: 100%;
+  padding: 1rem 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e0d0; /* Subtle luxury border */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03); /* Subtle shadow for depth */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Remove default link underline */
+  color: inherit; /* Inherit text color */
+  cursor: pointer;
+}
+
+.logo-image {
+  margin-right: 0.75rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-image img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.chat-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.chat-container:hover {
+  opacity: 0.8;
+}
+ 
+.chat-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: #333;
+  margin-right: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.whatsapp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-container {
+  position: relative;
+}
+
+.cart-icon {
+  color: #1a1a1a;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #b8a283; /* Sophisticated gold/bronze accent */
+  color: white;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.tagline {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.tagline span {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: #333;
+  text-transform: uppercase;
+}
+
+/* Responsive styles */
+/* Mobile styling */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .logo-image {
+    height: 32px;
+  }
+  
+  .brand-name {
+    font-size: 1.25rem;
+  }
+  
+  .tagline {
+    position: relative;
+    left: 0;
+    transform: none;
+    order: 3;
+    width: 100%;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  
+  .tagline span {
+    font-size: 0.85rem;
+  }
+  
+  .chat-text {
+    display: none; /* Hide text on mobile, show only icon */
+  }
+  
+  .chat-container {
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-image {
+    height: 28px;
+  }
+  
+  .brand-name {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+}
+
+.cart-icon-svg {
+  transition: transform 0.3s ease;
+}
+
+.animate-cart {
+  animation: cartPulse 0.6s ease;
+}
+
+@keyframes cartPulse {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Cart count animation */
+.cart-count {
+  transition: all 0.3s ease;
+}
+
+.animate-count {
+  animation: countBounce 0.6s ease;
+  background-color: #e05151; /* Temporarily change color during animation */
+}
+
+@keyframes countBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
