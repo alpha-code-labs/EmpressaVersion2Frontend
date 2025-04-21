@@ -8,7 +8,7 @@ export const collectionsData = [
         {
           id: 1,
           title: "Eclipsed Twilight Waistcoat Black",
-          price: 10,
+          price: 2399,
           originalPrice: 3999,
           discount: 40,
           description: "A sophisticated black and white evening gown with elegant draping and a flattering silhouette.",
@@ -353,7 +353,7 @@ export const collectionsData = [
         {
           id: 18,
           title: "Empowered Ember Mint Skirt",
-          price: 5,
+          price: 1999,
           originalPrice: 2499,
           discount: 20,
           description: "A confident power suit with multicolored striped patterns that exude strength and style.",
