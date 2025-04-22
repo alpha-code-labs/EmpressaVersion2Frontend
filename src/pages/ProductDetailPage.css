@@ -36,6 +36,48 @@
   aspect-ratio: 2/3; /* Changed from 3/4 to 2/3 to make it taller */
 }
 
+/* Swipeable container styles */
+.swipeable-container {
+  touch-action: pan-y; /* Allow vertical scrolling but capture horizontal swipes */
+  user-select: none; /* Prevent text selection during swipe */
+}
+
+/* Swipe indicator styles */
+.swipe-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.swipe-indicator-text {
+  display: flex;
+  align-items: center;
+}
+
+.swipe-indicator-text:before,
+.swipe-indicator-text:after {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 1px;
+  background-color: white;
+  margin: 0 5px;
+}
+
+.swipeable-container:hover .swipe-indicator {
+  opacity: 0.7;
+}
+
 /* Carousel Navigation Styles */
 .image-carousel-controls {
   position: absolute;
@@ -577,6 +619,18 @@
     width: 100%;
     margin: 0 auto;
   }
+  
+  /* Show swipe indicator briefly on mobile when component mounts */
+  .swipe-indicator {
+    opacity: 0.8;
+    animation: fadeOut 3s forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 0.8; }
+    70% { opacity: 0.8; }
+    100% { opacity: 0; }
+  }
 }
 
 @media (max-width: 480px) {
@@ -653,5 +707,10 @@
   
   .image-carousel-controls {
     padding: 0.4rem;
+  }
+  
+  .swipe-indicator {
+    font-size: 0.7rem;
+    padding: 6px 10px;
   }
 }
