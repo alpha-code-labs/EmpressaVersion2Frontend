@@ -16,6 +16,7 @@ const ProductDetailPage = () => {
   const mainImageRef = useRef(null);
   const magnifierRef = useRef(null);
   const containerRef = useRef(null);
+  const touchStartXRef = useRef(null);
   const navigate = useNavigate();
   
   // Get session context
@@ -150,6 +151,50 @@ const ProductDetailPage = () => {
     };
   }, []);
 
+  // Set up touch events for swipe
+  useEffect(() => {
+    if (!mainImageRef.current) return;
+
+    const handleTouchStart = (e) => {
+      touchStartXRef.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (touchStartXRef.current === null) return;
+      
+      const touchEndX = e.changedTouches[0].clientX;
+      const diffX = touchStartXRef.current - touchEndX;
+      
+      // Check if the swipe was significant enough (more than 50px)
+      if (Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+          // Swiped left - go to next image
+          nextImage();
+        } else {
+          // Swiped right - go to previous image
+          prevImage();
+        }
+      }
+      
+      touchStartXRef.current = null;
+    };
+    
+    const handleTouchCancel = () => {
+      touchStartXRef.current = null;
+    };
+
+    const element = mainImageRef.current;
+    element.addEventListener('touchstart', handleTouchStart, { passive: true });
+    element.addEventListener('touchend', handleTouchEnd);
+    element.addEventListener('touchcancel', handleTouchCancel);
+    
+    return () => {
+      element.removeEventListener('touchstart', handleTouchStart);
+      element.removeEventListener('touchend', handleTouchEnd);
+      element.removeEventListener('touchcancel', handleTouchCancel);
+    };
+  }, [mainImageRef.current, product]);
+
   // Get product images array with fallback
   const getProductImages = () => {
     return product && product.images && product.images.length > 0
@@ -263,7 +308,7 @@ const ProductDetailPage = () => {
       <div className="product-detail-container">
         {/* Left side - Product Images */}
         <div className="product-images-section">
-          <div className="main-image-container img-magnifier-container" ref={containerRef}>
+          <div className="main-image-container img-magnifier-container swipeable-container" ref={containerRef}>
             <img 
               ref={mainImageRef}
               src={mainImage || productImages[0]} 
@@ -271,6 +316,11 @@ const ProductDetailPage = () => {
               className="main-product-image" 
               style={{ cursor: window.innerWidth > 768 ? 'crosshair' : 'default' }}
             />
+            
+            {/* Swipe indicator overlay on mobile */}
+            <div className="swipe-indicator">
+              <span className="swipe-indicator-text">Swipe to view more</span>
+            </div>
             
             {/* Carousel Navigation */}
             <div className="image-carousel-controls">
