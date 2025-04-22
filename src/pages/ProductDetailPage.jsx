@@ -13,6 +13,7 @@ const ProductDetailPage = () => {
   const [mainImage, setMainImage] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const mainImageRef = useRef(null);
   const magnifierRef = useRef(null);
   const containerRef = useRef(null);
@@ -21,6 +22,16 @@ const ProductDetailPage = () => {
   
   // Get session context
   const { addToCart } = useSession();
+
+  // Add window resize listener to detect mobile view
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     // Find the collection based on its slug
@@ -303,8 +314,58 @@ const ProductDetailPage = () => {
   const discountPercent = product.discount || 
     (product.originalPrice ? Math.round(100 * (product.originalPrice - product.price) / product.originalPrice) : null);
 
+  // Mobile view pricing and CTA component
+  const MobilePricingCTA = () => (
+    <div className="mobile-pricing-cta">
+      <div className="mobile-product-title-row">
+        <h1 className="product-title">{product.title}</h1>
+      </div>
+      
+      <div className="mobile-price-row">
+        <div className="product-price-row">
+          <span className="product-current-price">₹{product.price.toLocaleString()}</span>
+          
+          {product.originalPrice && (
+            <>
+              <span className="product-original-price">₹{product.originalPrice.toLocaleString()}</span>
+              
+              {discountPercent && (
+                <span className="product-discount-tag">{discountPercent}% off</span>
+              )}
+            </>
+          )}
+        </div>
+        <p className="tax-info">Inclusive of all taxes</p>
+      </div>
+      
+      <div className="mobile-size-selection">
+        {product.sizes && product.sizes.length > 0 && (
+          <div className="size-options mobile-size-options">
+            {product.sizes.map((size) => (
+              <button
+                key={size}
+                className={`size-option ${selectedSize === size ? 'selected' : ''}`}
+                onClick={() => handleSizeSelect(size)}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      <div className="mobile-actions">
+        <button className="add-to-cart-btn" onClick={handleAddToCart}>Add To Cart</button>
+        <button className="buy-now-btn" onClick={handleBuyNow}>Buy Now</button>
+      </div>
+    </div>
+  );
+
   return (
     <div className="product-detail-page">
+      {/* Mobile pricing and CTA only shown on mobile */}
+      {isMobile && <MobilePricingCTA />}
+      
       <div className="product-detail-container">
         {/* Left side - Product Images */}
         <div className="product-images-section">
@@ -356,23 +417,26 @@ const ProductDetailPage = () => {
         
         {/* Center - Product Info */}
         <div className="product-info-section">
-          <h1 className="product-title">{product.title}</h1>
-          
-          <div className="product-price-section">
-            <div className="product-price-row">
-              <span className="product-current-price">₹{product.price.toLocaleString()}</span>
-              
-              {product.originalPrice && (
-                <>
-                  <span className="product-original-price">₹{product.originalPrice.toLocaleString()}</span>
-                  
-                  {discountPercent && (
-                    <span className="product-discount-tag">{discountPercent}% off</span>
-                  )}
-                </>
-              )}
+          {/* Hide these elements on mobile as they'll be shown at the top */}
+          <div className={`desktop-only-content ${isMobile ? 'hidden-mobile' : ''}`}>
+            <h1 className="product-title">{product.title}</h1>
+            
+            <div className="product-price-section">
+              <div className="product-price-row">
+                <span className="product-current-price">₹{product.price.toLocaleString()}</span>
+                
+                {product.originalPrice && (
+                  <>
+                    <span className="product-original-price">₹{product.originalPrice.toLocaleString()}</span>
+                    
+                    {discountPercent && (
+                      <span className="product-discount-tag">{discountPercent}% off</span>
+                    )}
+                  </>
+                )}
+              </div>
+              <p className="tax-info">Inclusive of all taxes</p>
             </div>
-            <p className="tax-info">Inclusive of all taxes</p>
           </div>
           
           {/* Product details (Material, SleeveStyle, Neck) */}
@@ -393,8 +457,8 @@ const ProductDetailPage = () => {
             </div>
           </div>
           
-          {/* Size Selection */}
-          <div className="size-selection-container">
+          {/* Size Selection - only visible on desktop */}
+          <div className={`size-selection-container ${isMobile ? 'hidden-mobile' : ''}`}>
             <h3 className="selection-title">Select Size</h3>
             <div className="size-options">
               {product.sizes && product.sizes.map((size) => (
@@ -409,8 +473,8 @@ const ProductDetailPage = () => {
             </div>
           </div>
           
-          {/* Action Buttons */}
-          <div className="product-actions">
+          {/* Action Buttons - only visible on desktop */}
+          <div className={`product-actions ${isMobile ? 'hidden-mobile' : ''}`}>
             <button className="add-to-cart-btn" onClick={handleAddToCart}>Add To Cart</button>
             <button className="buy-now-btn" onClick={handleBuyNow}>Buy Now</button>
           </div>
