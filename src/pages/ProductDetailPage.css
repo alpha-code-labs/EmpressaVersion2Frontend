@@ -4,11 +4,57 @@
   padding: 3rem 1.5rem;
 }
 
+/* Mobile pricing and CTA section */
+.mobile-pricing-cta {
+  display: none; /* Hidden by default, shown only on mobile */
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #fff;
+  padding: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.mobile-product-title-row {
+  margin-bottom: 0.5rem;
+}
+
+.mobile-price-row {
+  margin-bottom: 0.75rem;
+}
+
+.mobile-size-selection {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.mobile-size-options {
+  margin-bottom: 0 !important;
+}
+
+.mobile-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .product-detail-container {
   display: grid;
   grid-template-columns: 300px 1fr 250px; /* 3-column layout */
   gap: 2rem;
   margin-bottom: 4rem;
+}
+
+/* Helper classes for showing/hiding content on mobile */
+.hidden-mobile {
+  display: initial;
+}
+
+.desktop-only-content {
+  display: block;
 }
 
 /* Product Images Section */
@@ -503,26 +549,24 @@
   }
 }
 
-@media (max-width: 900px) {
-  .product-detail-container {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .recommendations-section {
-    grid-column: span 2;
-    margin-top: 2rem;
-    border-top: 1px solid rgba(184, 162, 131, 0.2);
-    padding-top: 1.5rem;
-  }
-  
-  .recommendations-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns when moved to bottom */
-  }
-}
-
 @media (max-width: 768px) {
+  .product-detail-page {
+    padding: 0;
+  }
+  
+  /* Show mobile pricing and CTA */
+  .mobile-pricing-cta {
+    display: block;
+  }
+  
+  /* Hide desktop versions of elements duplicated in mobile header */
+  .hidden-mobile {
+    display: none !important;
+  }
+  
   .product-detail-container {
     grid-template-columns: 1fr;
+    margin-top: 0.5rem;
   }
   
   .product-info-section, 
@@ -555,17 +599,48 @@
     min-height: 2.6em;
   }
   
-  .product-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
+  /* Mobile pricing styling */
+  .mobile-pricing-cta .product-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
   }
   
-  .product-current-price {
-    font-size: 1.3rem;
+  .mobile-pricing-cta .product-current-price {
+    font-size: 1.2rem;
   }
   
-  .product-original-price {
-    font-size: 1rem;
+  .mobile-pricing-cta .product-original-price {
+    font-size: 0.9rem;
+  }
+  
+  .mobile-pricing-cta .product-discount-tag {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.4rem;
+  }
+  
+  .mobile-pricing-cta .tax-info {
+    font-size: 0.75rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-pricing-cta .size-option {
+    min-width: 35px;
+    height: 35px;
+    padding: 0 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .mobile-pricing-cta .product-actions,
+  .mobile-actions {
+    gap: 0.5rem;
+  }
+  
+  .mobile-pricing-cta .add-to-cart-btn, 
+  .mobile-pricing-cta .buy-now-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
   }
   
   .product-details-section {
@@ -579,15 +654,6 @@
   }
   
   .detail-value {
-    font-size: 0.9rem;
-  }
-  
-  .product-actions {
-    margin-top: 1.5rem;
-  }
-  
-  .add-to-cart-btn, .buy-now-btn {
-    padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
   
@@ -615,7 +681,7 @@
   }
   
   .product-images-section {
-    max-width: 280px; /* Adjusted for mobile */
+    max-width: 100%; /* Full width on mobile */
     width: 100%;
     margin: 0 auto;
   }
@@ -649,9 +715,12 @@
     min-height: 2.4em;
   }
   
-  .product-title {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+  .mobile-pricing-cta {
+    padding: 0.65rem;
+  }
+  
+  .mobile-pricing-cta .product-title {
+    font-size: 1.1rem;
   }
   
   .product-price-row {
@@ -677,17 +746,18 @@
   }
   
   .product-info-section {
-    padding: 0.75rem 0.75rem 3.5rem;
+    padding: 0.75rem;
   }
   
-  .product-actions {
-    flex-direction: column;
-    gap: 0.8rem;
+  .mobile-actions {
+    flex-direction: row; /* Keep buttons side by side on mobile */
+    gap: 0.5rem;
   }
   
-  .add-to-cart-btn, .buy-now-btn {
-    width: 100%;
-    padding: 0.8rem 1rem;
+  .mobile-pricing-cta .add-to-cart-btn, 
+  .mobile-pricing-cta .buy-now-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
   }
   
   .carousel-control {
