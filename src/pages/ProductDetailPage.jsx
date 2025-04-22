@@ -12,6 +12,7 @@ const ProductDetailPage = () => {
   const [error, setError] = useState(null);
   const [mainImage, setMainImage] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const mainImageRef = useRef(null);
   const magnifierRef = useRef(null);
   const containerRef = useRef(null);
@@ -149,9 +150,34 @@ const ProductDetailPage = () => {
     };
   }, []);
 
-  // Function to handle thumbnail click
-  const handleThumbnailClick = (imageSrc) => {
-    setMainImage(imageSrc);
+  // Get product images array with fallback
+  const getProductImages = () => {
+    return product && product.images && product.images.length > 0
+      ? product.images
+      : ['/images/placeholder.jpg', '/images/placeholder.jpg', '/images/placeholder.jpg'];
+  };
+
+  // Function to navigate to the next image
+  const nextImage = () => {
+    const images = getProductImages();
+    const newIndex = (currentImageIndex + 1) % images.length;
+    setCurrentImageIndex(newIndex);
+    setMainImage(images[newIndex]);
+  };
+
+  // Function to navigate to the previous image
+  const prevImage = () => {
+    const images = getProductImages();
+    const newIndex = (currentImageIndex - 1 + images.length) % images.length;
+    setCurrentImageIndex(newIndex);
+    setMainImage(images[newIndex]);
+  };
+
+  // Function to handle direct image selection
+  const selectImage = (index) => {
+    const images = getProductImages();
+    setCurrentImageIndex(index);
+    setMainImage(images[index]);
   };
   
   // Function to get similar products with the same category
@@ -226,9 +252,7 @@ const ProductDetailPage = () => {
   }
 
   // For testing - let's create dummy images if none exist
-  const productImages = product.images && product.images.length > 0 
-    ? product.images 
-    : ['/images/placeholder.jpg', '/images/placeholder.jpg', '/images/placeholder.jpg'];
+  const productImages = getProductImages();
 
   // Calculate discount percentage if not provided
   const discountPercent = product.discount || 
@@ -247,23 +271,36 @@ const ProductDetailPage = () => {
               className="main-product-image" 
               style={{ cursor: window.innerWidth > 768 ? 'crosshair' : 'default' }}
             />
-          </div>
-          
-          {/* Thumbnails Gallery */}
-          <div className="product-thumbnails">
-            {productImages.map((image, index) => (
-              <div 
-                key={index} 
-                className={`thumbnail-container ${mainImage === image ? 'active' : ''}`}
-                onClick={() => handleThumbnailClick(image)}
+            
+            {/* Carousel Navigation */}
+            <div className="image-carousel-controls">
+              <button 
+                className="carousel-control prev-control" 
+                onClick={prevImage}
+                aria-label="Previous image"
               >
-                <img 
-                  src={image} 
-                  alt={`${product.title} - View ${index + 1}`} 
-                  className="thumbnail-image" 
-                />
+                &lsaquo;
+              </button>
+              
+              <div className="carousel-indicators">
+                {productImages.map((_, index) => (
+                  <span 
+                    key={index}
+                    className={`carousel-dot ${currentImageIndex === index ? 'active' : ''}`}
+                    onClick={() => selectImage(index)}
+                    aria-label={`View image ${index + 1}`}
+                  />
+                ))}
               </div>
-            ))}
+              
+              <button 
+                className="carousel-control next-control" 
+                onClick={nextImage}
+                aria-label="Next image"
+              >
+                &rsaquo;
+              </button>
+            </div>
           </div>
         </div>
         
