@@ -8,7 +8,7 @@ export const collectionsData = [
         {
           id: 1,
           title: "Eclipsed Twilight Waistcoat Black",
-          price: 2399,
+          price: 50,
           originalPrice: 3999,
           discount: 40,
           description: "A sophisticated black and white evening gown with elegant draping and a flattering silhouette.",
