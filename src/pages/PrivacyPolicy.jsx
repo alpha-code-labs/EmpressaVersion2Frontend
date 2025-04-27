@@ -87,8 +87,8 @@ const PrivacyPolicyPage = () => {
           <h3>7. Contact Us</h3>
           <p>
             For any questions regarding this Privacy Policy, contact us at{' '}
-            <a href="mailto:empressafashion@empressafashion.com">
-              empressafashion@empressafashion.com
+            <a href="mailto:fashionempressa@gmail.com">
+              fashionempressa@gmail.com
             </a>
           </p>
         </section>
