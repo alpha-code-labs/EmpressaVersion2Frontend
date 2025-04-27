@@ -8,7 +8,7 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderSuccess from './pages/OrderSuccess';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicy';
 import { SessionProvider } from './context/SessionContext';
 import './App.css';
 
@@ -26,7 +26,7 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/order-success" element={<OrderSuccess />} />
-              <Route path="/privacy" element={<PrivacyPolicyPage />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
             </Routes>
           </main>
           <Footer />
