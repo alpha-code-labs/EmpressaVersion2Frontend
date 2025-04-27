@@ -26,7 +26,7 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/order-success" element={<OrderSuccess />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/privacy" element={<PrivacyPolicyPage />} />
             </Routes>
           </main>
           <Footer />
