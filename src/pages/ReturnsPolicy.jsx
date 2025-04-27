@@ -21,7 +21,7 @@ const ReturnsPolicyPage = () => {
             <li>Products must be unused, in their original packaging, and with all tags attached.</li>
             <li>Returns are not accepted for final sale items, customized products, or personal care items.</li>
             <li>Customers are responsible for return shipping costs unless the item received is defective or incorrect.</li>
-            <li>To initiate a return, contact our customer support team at <a href="mailto:empressafashion@empressafashion.com">empressafashion@empressafashion.com</a> with your order details.</li>
+            <li>To initiate a return, contact our customer support team at <a href="mailto:fashionempressa@gmail.com">fashionempressa@gmail.com</a> with your order details.</li>
             <li>Once approved, you will receive instructions on how to return the item.</li>
             <li>Returns must be shipped within <strong>7 days</strong> of approval.</li>
           </ul>
@@ -58,8 +58,8 @@ const ReturnsPolicyPage = () => {
           <h3>5. Contact Us</h3>
           <p>
             For any return, refund, or exchange inquiries, please contact us at{' '}
-            <a href="mailto:empressafashion@empressafashion.com">
-              empressafashion@empressafashion.com
+            <a href="mailto:fashionempressa@gmail.com">
+              fashionempressa@gmail.com
             </a>
             . Our team is happy to assist you!
           </p>
