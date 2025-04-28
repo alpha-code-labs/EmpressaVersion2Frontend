@@ -10,7 +10,7 @@ const Header = () => {
   
   const openWhatsApp = () => {
     // WhatsApp phone number and pre-filled message
-    const phoneNumber = "918700409503";
+    const phoneNumber = "919266213335";
     const message = "Hi Empressa";
     
     // Create WhatsApp web URL with phone and encoded message
